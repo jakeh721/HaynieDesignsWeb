@@ -1,2 +1,0 @@
-# HaynieDesignsWeb
-Haynie Designs Website
