@@ -1,0 +1,122 @@
+extends  ../layout
+
+//- Includes
+include ../elements/_ui-rd-parallax
+include ../elements/_ui-thumbnail-apollo
+include ../elements/_ui-isotope
+
+//-Title
+block title
+  title= cfg.nav.portfolio.title
+
+
+
+//- Page
+block page
+  link(rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css")
+  // Page Head
+  header.page-head
+    //- RD Navbar
+    +rd-navbar-sidebar-toggle(
+    'rd-navbar-sidebar-toggle rd-navbar-light',
+    {
+      "data-lg-auto-height": "true",
+      "data-md-layout": 'rd-navbar-fixed',
+      "data-lg-layout": 'rd-navbar-fixed',
+      "data-lg-stick-up": 'false',
+      "data-lg-hover-on": "false"
+    },
+    "<img style='margin-top: -5px;margin-left: -15px;' width='250' src='images/logo_black_1080.png' alt=''/>",
+    cfg.nav.portfolio,
+    cfg.nav
+    )
+
+  // Page Content
+  main.page-content
+    // Page Header
+    include ../sections/_section-header
+
+    // Portfolio
+    section#gal.section-85
+      .shell-fluid
+        h1.text-bold Gallery
+        ul.p.list-inline.list-inline-dashed.offset-top-24
+          li
+            a(href=cfg.nav.home.href) Home
+          li Gallery
+        .offset-top-30
+          +isotope(['All galleries', 'Sand Rails', 'Vehicles', 'Helmets', 'Misc'],{
+            //- "layout": "masonry",
+            "alignClass": "isotope-filters-vertical"
+          }, "selection")
+            .card-columns
+              each r in result
+                - for (var i = r.length-1; i > 0; i--) {
+                    .card(style="border: none; background-color: transparent; cursor: pointer; margin-bottom: 1.3rem;" data-type= r.name)
+                      .overlay
+                      img(src="https://s3-us-west-2.amazonaws.com/hayniephotos/" + r[i].Key, style="border-radius: 0; width: 100%")
+                - }
+  div.image-pop
+    img(src="")
+
+  script.
+    document.addEventListener('DOMContentLoaded', function(){
+
+      $('#selection > li > a').click(function(e) {
+        
+        var filter = $(this).data('isotope-filter');
+
+        $('#selection > li > a.active').removeClass('active');
+        $(this).addClass('active');
+
+        for(var i = 0; i < 5; i++) {
+          if(filter == "*") {
+            $('div[data-type="Sand Rails"]').fadeIn();
+            $('div[data-type="Vehicles"]').fadeIn();
+            $('div[data-type="Helmets"]').fadeIn();
+            $('div[data-type="Misc"]').fadeIn();
+          } else if(filter == 'Sand Rails') {
+            $('div[data-type="Sand Rails"]').fadeIn();
+            $('div[data-type="Vehicles"]').fadeOut();
+            $('div[data-type="Helmets"]').fadeOut();
+            $('div[data-type="Misc"]').fadeOut();
+          } else if(filter == 'Vehicles') {
+            $('div[data-type="Sand Rails"]').fadeOut();
+            $('div[data-type="Vehicles"]').fadeIn();
+            $('div[data-type="Helmets"]').fadeOut();
+            $('div[data-type="Misc"]').fadeOut();
+          } else if(filter == 'Helmets') {
+            $('div[data-type="Sand Rails"]').fadeOut();
+            $('div[data-type="Vehicles"]').fadeOut();
+            $('div[data-type="Helmets"]').fadeIn();
+            $('div[data-type="Misc"]').fadeOut();
+          } else if(filter == 'Misc') {
+            $('div[data-type="Sand Rails"]').fadeOut();
+            $('div[data-type="Vehicles"]').fadeOut();
+            $('div[data-type="Helmets"]').fadeOut();
+            $('div[data-type="Misc"]').fadeIn();
+          }
+        }
+      });
+
+      $('.card > img').click(function(e) {
+        var img = $(this).attr('src');
+
+        $('.image-pop > img').attr('src', img);
+        $('.image-pop').fadeIn().addClass('showing');
+        var height = $('.image-pop > img').height();
+        var width = $('.image-pop > img').width();
+        console.log(height);
+        var wHeight = $(window).height();
+        $('.image-pop > img').css('margin-top', wHeight/2 - height/2).css('width', width);
+        $('.section-relative').css('z-index', -1);
+      });
+
+      $('.image-pop').click(function() {
+        if($(this).hasClass('showing')) {
+          $(this).removeClass('showing').fadeOut()
+          $('.section-relative').css('z-index', 0);
+        }
+      });
+
+    }, false);

@@ -1,0 +1,40 @@
+extends  ../layout
+
+//-Title
+block title
+  title= cfg.brand.name
+
+//- Page
+block page
+  // Page Head
+  header.page-head
+    //- RD Navbar
+    +rd-navbar-sidebar-toggle(
+    'rd-navbar-sidebar-toggle rd-navbar-light',
+    {
+      "data-auto-height": "true",
+      "data-md-layout": 'rd-navbar-fixed',
+      "data-lg-layout": 'rd-navbar-fixed',
+      "data-lg-stick-up": 'false',
+      "data-lg-hover-on": "false"
+    },
+    "<img style='margin-top: -5px;margin-left: -15px;' width='250' src='images/logo_black_1080.png' alt=''/>",
+    cfg.nav.home,
+    cfg.nav
+    )
+
+  // Page Content
+  main.page-content
+    .section-relative.section-cover
+      // Swiper
+      .swiper-container.swiper-slider(data-height='100vh', data-min-height='400px', data-dots="true")
+        .swiper-wrapper
+          .swiper-slide.swiper-slide-overlay-disable.swiper-slide-center(data-slide-bg='images/backgrounds/shop_dark.jpg')
+        // Swiper Pagination
+        .swiper-pagination.swiper-pagination-type-1
+      .section-center-absolute.offset-top-20.offset-md-top-0
+        img.img-responsive.center-block.element-fullwidth(src="images/logo_white_1080.png" width="984" height="91" alt="")
+        .shell.offset-top-30.offset-md-top-50
+          .range.range-xs-center
+            .cell-sm-9.cell-md-8.cell-lg-6.cell-xl-4
+              a(href=cfg.nav.portfolio.href).btn.btn-lg.btn-block.btn-primary.btn-rect.text-spacing-120.text-regular view gallery
