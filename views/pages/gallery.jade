@@ -61,11 +61,10 @@ block page
 
       result.forEach(function(e, i) {
         for(var i = 1; i < e.length; i++) {
-          var image = "<div class='col-xs-12 col-sm-6 col-md-4' style='display: none; margin-bottom: 1.3rem; height: 430px;' data-type='" + e[0].name + "' data-src='https://s3-us-west-2.amazonaws.com/hayniephotos/" + e[i].Key + "'>"
-          + "<div style='background-color: black; height: 100%'>"
-          + "<img src='https://s3-us-west-2.amazonaws.com/hayniephotos/" + e[i].Key + "' style='border-radius: 0; width: 100%; position: relative;' />"
-          + "</div>"
-          + "</div>";
+          var image = '<div class="col-xs-12 col-sm-12 col-md-4" style="display: none; margin-bottom: 1.3rem; height: 430px;" data-type="' + e[0].name + '" data-src="https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '">'
+          + '<div style="height: 100%; background-image: url(\'https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '\'); background-size: cover;">'
+          + '</div>'
+          + '</div>';
           $('.images').append(image);
         }
       });
@@ -80,64 +79,22 @@ block page
       });
 
       $('#selection > li > a').click(function(e) {
-        
         var filter = $(this).data('isotope-filter');
         $('#selection > li > a.active').removeClass('active');
         $(this).addClass('active');
         $('.next').data('filter', filter);
         $('.images > div').fadeOut();
         displayNext(true);
-
-
-        //- for(var i = 0; i < 5; i++) {
-          //- if(filter == "*") {
-          //-   //- $('div[data-type="Sand Rails"]').fadeIn();
-          //-   //- $('div[data-type="Vehicles"]').fadeIn();
-          //-   //- $('div[data-type="Helmets"]').fadeIn();
-          //-   //- $('div[data-type="Misc"]').fadeIn();
-          //-   $('.next').attr('data-filter', 'none');
-          //-   displayNext(true);
-          //- } else if(filter == 'Sand Rails') {
-          //-   //- $('div[data-type="Sand Rails"]').fadeIn();
-          //-   $('div[data-type="Vehicles"]').fadeOut();
-          //-   $('div[data-type="Helmets"]').fadeOut();
-          //-   $('div[data-type="Misc"]').fadeOut();
-          //-   $('.next').attr('data-filter', 'Sand Rails');
-          //-   displayNext(true);
-          //- } else if(filter == 'Vehicles') {
-          //-   $('div[data-type="Sand Rails"]').fadeOut();
-          //-   //- $('div[data-type="Vehicles"]').fadeIn();
-          //-   $('div[data-type="Helmets"]').fadeOut();
-          //-   $('div[data-type="Misc"]').fadeOut();
-          //-   $('.next').attr('data-filter', 'Vehicles');
-          //-   displayNext(true);
-          //- } else if(filter == 'Helmets') {
-          //-   $('div[data-type="Sand Rails"]').fadeOut();
-          //-   $('div[data-type="Vehicles"]').fadeOut();
-          //-   //- $('div[data-type="Helmets"]').fadeIn();
-          //-   $('div[data-type="Misc"]').fadeOut();
-          //-   $('.next').attr('data-filter', 'Helmets');
-          //-   displayNext(true);
-          //- } else if(filter == 'Misc') {
-          //-   $('div[data-type="Sand Rails"]').fadeOut();
-          //-   $('div[data-type="Vehicles"]').fadeOut();
-          //-   $('div[data-type="Helmets"]').fadeOut();
-          //-   //- $('div[data-type="Misc"]').fadeIn(); 
-          //-   $('.next').attr('data-filter', 'Misc');
-          //-   displayNext(true);
-          //- }
-        //- }
       });
 
       $('.images > div').click(function(e) {
         var img = $(this).data('src');
-
         $('.image-pop > img').attr('src', img);
         $('.image-pop').fadeIn().addClass('showing');
         var height = $('.image-pop > img').height();
         var width = $('.image-pop > img').width();
         var wHeight = $(window).height();
-        $('.image-pop > img').css('margin-top', wHeight/2 - height/2).css('width', width);
+        $('.image-pop > img').css('margin-top', wHeight/2 - height/2).css('max-width', '100%');
         $('.section-relative').css('z-index', -1);
       });
 
@@ -158,8 +115,6 @@ block page
         else
           children = list.children();
 
-        console.log(children);
-
         // get index stored as a data on the list
         var index = reset ? 1 : list.data('index');
 
@@ -168,7 +123,6 @@ block page
 
         // Get 20 elements from Images - starting from index
         for(var i = index; i < index + 20; i++) {
-          console.log(children[i]);
           $(children[i]).fadeIn(function() {
             var img = $(this).find('img');
             var container = $(this).find('div');
