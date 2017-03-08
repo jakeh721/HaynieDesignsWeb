@@ -167,7 +167,7 @@ block page
         list.data('index', index + 20);
 
         // Get 20 elements from Images - starting from index
-        for(var i = index + 20; i > index; i--) {
+        for(var i = index; i < index + 20; i++) {
           $(children[i]).fadeIn(function() {
             var img = $(this).find('img');
             var container = $(this).find('div');
