@@ -78,6 +78,12 @@ block page
         }
       });
 
+      $('body').bind('touchmove', function(e) {
+        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+          displayNext();
+        }
+      }
+
       $('#selection > li > a').click(function(e) {
         var filter = $(this).data('isotope-filter');
         $('#selection > li > a.active').removeClass('active');
