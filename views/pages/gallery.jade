@@ -52,6 +52,9 @@ block page
             .row
               div.col-sm-12
                 div.next(data-filter="*", style="display: none;")
+            .row.hidden-md.hidden-lg
+              div.col-sm-12
+                button.btn.more More
   div.image-pop
     img(src="")
 
@@ -78,10 +81,10 @@ block page
         }
       });
 
-      $('body').bind('touchmove', function(e) {
-        if($(window).scrollTop() + $(window).height() == $(document).height()) {
-          displayNext();
-        }
+      $('.more').click(function(e){
+        e.preventDefault();
+
+        displayNext();
       });
 
       $('#selection > li > a').click(function(e) {
