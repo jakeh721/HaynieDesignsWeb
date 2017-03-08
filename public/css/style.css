@@ -35032,4 +35032,12 @@ pre .chunk {
 #selection a {
   cursor: pointer; }
 
+.isotope-filters-list {
+  background-color: #212121;
+  position: relative;
+  display: block; }
+
+.isotope-filters-list > li > a.active, .isotope-filters-list > li > a:hover {
+  background-color: #4c4c4c; }
+
 /*# sourceMappingURL=style.css.map */

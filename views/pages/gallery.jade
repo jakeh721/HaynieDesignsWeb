@@ -46,13 +46,12 @@ block page
           li Gallery
         .offset-top-30
           +isotope(['All galleries', 'Sand Rails', 'Vehicles', 'Helmets', 'Misc'],{
-            //- "layout": "masonry",
             "alignClass": "isotope-filters-vertical"
           }, "selection")
-            .card-columns
+            .row.images
               each r in result
                 - for (var i = r.length-1; i > 0; i--) {
-                    .card(style="border: none; background-color: transparent; cursor: pointer; margin-bottom: 1.3rem;" data-type= r.name)
+                    .col-xs-12.col-sm-6.col-md-4(style="border: none; background-color: transparent; cursor: pointer; margin-bottom: 1.3rem;" data-type= r.name)
                       .overlay
                       img(src="https://s3-us-west-2.amazonaws.com/hayniephotos/" + r[i].Key, style="border-radius: 0; width: 100%")
                 - }
