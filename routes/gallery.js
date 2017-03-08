@@ -22,8 +22,13 @@ router.get('/', function(req, res, next) {
         if (err) {
           console.log(err, err.stack);
         } else {
-          data.Contents.name = "Sand Rails";
-          data.Contents.count = data.Contents.length;
+          var info = {
+            name: "Sand Rails",
+            count: data.Contents.length
+          };
+          // data.Contents.info.name = "Sand Rails";
+          // data.Contents.info.count = data.Contents.length;
+          data.Contents.push(info);
           list.push(data.Contents);
           cb(null, list);
         }
@@ -35,8 +40,13 @@ router.get('/', function(req, res, next) {
         if (err) {
           console.log(err, err.stack);
         } else {
-          data.Contents.name = "Vehicles";
-          data.Contents.count = data.Contents.length;
+          var info = {
+            name: "Vehicles",
+            count: data.Contents.length
+          };
+          // data.Contents.name = "Vehicles";
+          // data.Contents.count = data.Contents.length;
+          data.Contents.push(info);
           list.push(data.Contents);
           cb(null, list);
         }
@@ -48,8 +58,13 @@ router.get('/', function(req, res, next) {
         if (err) {
           console.log(err, err.stack);
         } else {
-          data.Contents.name = "Helmets";
-          data.Contents.count = data.Contents.length;
+          var info = {
+            name: "Helmets",
+            count: data.Contents.length
+          };
+          // data.Contents.name = "Helmets";
+          // data.Contents.count = data.Contents.length;
+          data.Contents.push(info);
           list.push(data.Contents);
           cb(null, list);
         }
@@ -61,8 +76,13 @@ router.get('/', function(req, res, next) {
         if (err) {
           console.log(err, err.stack);
         } else {
-          data.Contents.name = "Misc";
-          data.Contents.count = data.Contents.length;
+          var info = {
+            name: "Misc",
+            count: data.Contents.length
+          };
+          // data.Contents.name = "Misc";
+          // data.Contents.count = data.Contents.length;
+          data.Contents.push(info);
           list.push(data.Contents);
           cb(null, list);
         }
