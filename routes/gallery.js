@@ -29,6 +29,7 @@ router.get('/', function(req, res, next) {
           // data.Contents.info.name = "Sand Rails";
           // data.Contents.info.count = data.Contents.length;
           data.Contents.push(info);
+          data.Contents.reverse();
           list.push(data.Contents);
           cb(null, list);
         }
@@ -47,6 +48,7 @@ router.get('/', function(req, res, next) {
           // data.Contents.name = "Vehicles";
           // data.Contents.count = data.Contents.length;
           data.Contents.push(info);
+          data.Contents.reverse();
           list.push(data.Contents);
           cb(null, list);
         }
@@ -65,6 +67,7 @@ router.get('/', function(req, res, next) {
           // data.Contents.name = "Helmets";
           // data.Contents.count = data.Contents.length;
           data.Contents.push(info);
+          data.Contents.reverse();
           list.push(data.Contents);
           cb(null, list);
         }
@@ -83,6 +86,7 @@ router.get('/', function(req, res, next) {
           // data.Contents.name = "Misc";
           // data.Contents.count = data.Contents.length;
           data.Contents.push(info);
+          data.Contents.reverse();
           list.push(data.Contents);
           cb(null, list);
         }
