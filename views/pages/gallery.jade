@@ -64,8 +64,8 @@ block page
 
       result.forEach(function(e, i) {
         for(var i = 1; i < e.length; i++) {
-          var image = '<div class="col-xs-12 col-sm-12 col-md-4" style="display: none; margin-bottom: 1.3rem; height: 430px;" data-type="' + e[0].name + '" data-src="https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '">'
-          + '<div style="height: 100%; background-image: url(\'https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '\'); background-size: cover;">'
+          var image = '<div class="col-xs-12 col-sm-12 col-md-4" style="display: none; margin-bottom: 1.3rem;" data-type="' + e[0].name + '" data-src="https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '">'
+          + '<div style="background-image: url(\'https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '\'); background-size: cover; background-position-x: 50%;">'
           + '</div>'
           + '</div>';
           $('.images').append(image);
@@ -88,53 +88,12 @@ block page
       });
 
       $('#selection > li > a').click(function(e) {
-        
         var filter = $(this).data('isotope-filter');
         $('#selection > li > a.active').removeClass('active');
         $(this).addClass('active');
         $('.next').data('filter', filter);
         $('.images > div').fadeOut();
         displayNext(true);
-
-
-        //- for(var i = 0; i < 5; i++) {
-          //- if(filter == "*") {
-          //-   //- $('div[data-type="Sand Rails"]').fadeIn();
-          //-   //- $('div[data-type="Vehicles"]').fadeIn();
-          //-   //- $('div[data-type="Helmets"]').fadeIn();
-          //-   //- $('div[data-type="Misc"]').fadeIn();
-          //-   $('.next').attr('data-filter', 'none');
-          //-   displayNext(true);
-          //- } else if(filter == 'Sand Rails') {
-          //-   //- $('div[data-type="Sand Rails"]').fadeIn();
-          //-   $('div[data-type="Vehicles"]').fadeOut();
-          //-   $('div[data-type="Helmets"]').fadeOut();
-          //-   $('div[data-type="Misc"]').fadeOut();
-          //-   $('.next').attr('data-filter', 'Sand Rails');
-          //-   displayNext(true);
-          //- } else if(filter == 'Vehicles') {
-          //-   $('div[data-type="Sand Rails"]').fadeOut();
-          //-   //- $('div[data-type="Vehicles"]').fadeIn();
-          //-   $('div[data-type="Helmets"]').fadeOut();
-          //-   $('div[data-type="Misc"]').fadeOut();
-          //-   $('.next').attr('data-filter', 'Vehicles');
-          //-   displayNext(true);
-          //- } else if(filter == 'Helmets') {
-          //-   $('div[data-type="Sand Rails"]').fadeOut();
-          //-   $('div[data-type="Vehicles"]').fadeOut();
-          //-   //- $('div[data-type="Helmets"]').fadeIn();
-          //-   $('div[data-type="Misc"]').fadeOut();
-          //-   $('.next').attr('data-filter', 'Helmets');
-          //-   displayNext(true);
-          //- } else if(filter == 'Misc') {
-          //-   $('div[data-type="Sand Rails"]').fadeOut();
-          //-   $('div[data-type="Vehicles"]').fadeOut();
-          //-   $('div[data-type="Helmets"]').fadeOut();
-          //-   //- $('div[data-type="Misc"]').fadeIn(); 
-          //-   $('.next').attr('data-filter', 'Misc');
-          //-   displayNext(true);
-          //- }
-        //- }
       });
 
       $('.images > div').click(function(e) {
@@ -166,8 +125,6 @@ block page
         else
           children = list.children();
 
-        console.log(children);
-
         // get index stored as a data on the list
         var index = reset ? 1 : list.data('index');
 
@@ -175,17 +132,18 @@ block page
         list.data('index', index + 20);
 
         // Get 20 elements from Images - starting from index
-        for(var i = index; i < index + 20; i++) {
-          console.log(children[i]);
+        for(var i = index-1; i < index + 20; i++) {
           $(children[i]).fadeIn(function() {
             var img = $(this).find('img');
             var container = $(this).find('div');
-            container.css('height', $(this).height());
             var height = img.height();
+            container.css('padding-bottom', (i==1) ? ($(this).parent().width() * .33333333333)-4.33 : $(this).parent().width() * .33333333333);
+
             if(height < $(this).height()) {
               var difference = $(this).height() - height;
               img.css("top", difference/2);
             }
+            
           });
         }
 
