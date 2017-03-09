@@ -10,7 +10,7 @@ router.post('/send', function(req, res, next) {
   console.log(req.body);
   sendmail({
     from: 'contact@hayniedesigns.com',
-    to: 'jake@hayniedesigns.com',
+    to: 'craighaynie@sbcglobal.net',
     subject: 'Contact Request',
     html: '<body><h3>Someone would like to contact you!</h3><p><b>Name: </b>' + req.body.name + '<br><b>Phone: </b>' + req.body.phone + '<br><b>Email: </b>' + req.body.email + '<br><b>Message: </b>' + req.body.message + '</p></body>',
   }, function(err, reply) {
