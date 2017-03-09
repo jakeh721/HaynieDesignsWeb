@@ -48,7 +48,7 @@ block page
           +isotope(['All galleries', 'Sand Rails', 'Vehicles', 'Helmets', 'Misc'],{
             "alignClass": "isotope-filters-vertical"
           }, "selection")
-            .row.images(data-index=1)
+            .row.images(data-index=1, style="min-height: 100%")
             .row
               div.col-sm-12
                 div.next(data-filter="*", style="display: none;")
@@ -137,7 +137,7 @@ block page
             var img = $(this).find('img');
             var container = $(this).find('div');
             var height = img.height();
-            container.css('padding-bottom', (i==1) ? ($(this).parent().width() * .33333333333)-4.33 : $(this).parent().width() * .33333333333);
+            container.css('padding-bottom', $(this).parent().width() * .33333333333);
 
             if(height < $(this).height()) {
               var difference = $(this).height() - height;
