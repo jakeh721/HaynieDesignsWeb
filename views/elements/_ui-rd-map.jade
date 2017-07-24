@@ -1,9 +1,9 @@
 //- mapLocation - {map} Object
 //- markerLocations - mass of {location} Objects
-mixin rd-map(mapLocation, markerLocations)
+mixin rd-map(mapLocation, markerLocations, mapKey)
   // RD Google Map
   .rd-google-map
-    #rd-google-map.rd-google-map__model(data-zoom= mapLocation.zoom, data-x= mapLocation.dataX, data-y= mapLocation.dataY, data-styles= mapLocation.dataStyles)
+    #rd-google-map.rd-google-map__model(data-zoom= mapLocation.zoom, data-x= mapLocation.dataX, data-y= mapLocation.dataY, data-styles= mapLocation.dataStyles, key= mapKey)
     ul.rd-google-map__locations
       each item in markerLocations
         li(data-x= item.dataX, data-y= item.dataY)
