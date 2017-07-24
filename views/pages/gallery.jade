@@ -45,7 +45,7 @@ block page
             a(href=cfg.nav.home.href) Home
           li Gallery
         .offset-top-30
-          +isotope(['All galleries', 'Sand Rails', 'Vehicles', 'Helmets', 'Misc'],{
+          +isotope(['Sand Rails', 'Vehicles', 'Helmets', 'Fish Factory', 'Misc'],{
             "alignClass": "isotope-filters-vertical"
           }, "selection")
             .row.images(data-index=1, style="min-height: 100%")
@@ -64,10 +64,16 @@ block page
 
       result.forEach(function(e, i) {
         for(var i = 1; i < e.length; i++) {
-          var image = '<div class="col-xs-12 col-sm-12 col-md-4" style="display: none; margin-bottom: 1.3rem;" data-type="' + e[0].name + '" data-src="https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '">'
-          + '<div style="background-image: url(\'https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '\'); background-size: cover; background-position-x: 50%; background-position-y: 50%">'
-          + '</div>'
-          + '</div>';
+          if(i == 1)
+            var image = '<div class="col-xs-12 col-sm-12 col-md-4" style="display: none;" data-type="' + e[0].name + '" data-src="https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '">'
+            + '<div style="background-image: url(\'https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '\'); background-size: cover; background-position-x: 50%; background-position-y: 50%">'
+            + '</div>'
+            + '</div>';
+          else
+            var image = '<div class="col-xs-12 col-sm-12 col-md-4" style="display: none; margin-bottom: 1.3rem;" data-type="' + e[0].name + '" data-src="https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '">'
+            + '<div style="background-image: url(\'https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '\'); background-size: cover; background-position-x: 50%; background-position-y: 50%">'
+            + '</div>'
+            + '</div>';
           $('.images').append(image);
         }
       });

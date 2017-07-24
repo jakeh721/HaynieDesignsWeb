@@ -18856,10 +18856,6 @@ a.icon-rect.fa-behance:hover, a.icon-circle.fa-behance:hover, a.icon-outlined.fa
 .media > .pull-left {
   padding-right: 10px; }
 
-@media (max-width: 768px) {
-  .image-pop > img {
-    width: 100% !important; } }
-
 @media (max-width: 767px) {
   .image-pop > img {
     width: 100% !important; } }
