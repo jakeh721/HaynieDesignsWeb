@@ -12,6 +12,12 @@
   padding-right: 10px;
 }
 
+@media (max-width: $screen-xs-max) {
+  .image-pop > img {
+    width: 100%!important
+  }
+}
+
 @media (min-width: $screen-xs-min) {
   .media-right,
   .media > .pull-right {
