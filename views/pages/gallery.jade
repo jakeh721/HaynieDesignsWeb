@@ -104,8 +104,8 @@ block page
       $('.images > div').click(function(e) {
         $('.image-pop > img').attr('src', 'https://s3-us-west-2.amazonaws.com/hayniephotos/Assets/Loading.gif');
         $('.image-pop').fadeIn().addClass('showing');
-        var height = $('.image-pop > img').height();
-        var width = $('.image-pop > img').width();
+        var height = $('.image-pop > img').height()/2;
+        var width = $('.image-pop > img').width()/2;
         var wHeight = $(window).height();
         $('.image-pop > img').css('margin-top', wHeight/2 - height/2).css('width', width);
         $('.section-relative').css('z-index', -1);
