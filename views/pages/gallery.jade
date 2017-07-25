@@ -51,7 +51,7 @@ block page
             .row.images(data-index=1, style="min-height: 100%")
             .row
               div.col-sm-12
-                div.next(data-filter="*", style="display: none;")
+                div.next(data-filter="Sand Rails", style="display: none;")
             .row.hidden-md.hidden-lg
               div.col-sm-12
                 button.btn.more More
@@ -61,17 +61,16 @@ block page
   script.
     document.addEventListener('DOMContentLoaded', function(){
       var result = !{JSON.stringify(result)};
-
       result.forEach(function(e, i) {
         for(var i = 1; i < e.length; i++) {
           if(i == 1)
             var image = '<div class="col-xs-12 col-sm-12 col-md-4" style="display: none;" data-type="' + e[0].name + '" data-src="https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '">'
-            + '<div style="background-image: url(\'https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '\'); background-size: cover; background-position-x: 50%; background-position-y: 50%">'
+            + '<div style="background-image: url(\'https://s3-us-west-2.amazonaws.com/hayniephotos/thumb_' + e[i].Key + '\'); background-size: cover; background-position-x: 50%; background-position-y: 50%">'
             + '</div>'
             + '</div>';
           else
             var image = '<div class="col-xs-12 col-sm-12 col-md-4" style="display: none; margin-bottom: 1.3rem;" data-type="' + e[0].name + '" data-src="https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '">'
-            + '<div style="background-image: url(\'https://s3-us-west-2.amazonaws.com/hayniephotos/' + e[i].Key + '\'); background-size: cover; background-position-x: 50%; background-position-y: 50%">'
+            + '<div style="background-image: url(\'https://s3-us-west-2.amazonaws.com/hayniephotos/thumb_' + e[i].Key + '\'); background-size: cover; background-position-x: 50%; background-position-y: 50%">'
             + '</div>'
             + '</div>';
           $('.images').append(image);

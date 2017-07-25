@@ -91,6 +91,25 @@ router.get('/', function(req, res, next) {
           cb(null, list);
         }
       });
+    },
+    function(list, cb) {
+      params.Prefix = "Fish Factory"
+      s3.listObjects(params, function(err, data) {
+        if (err) {
+          console.log(err, err.stack);
+        } else {
+          var info = {
+            name: "Fish Factory",
+            count: data.Contents.length
+          };
+          // data.Contents.name = "Fish Factory";
+          // data.Contents.count = data.Contents.length;
+          data.Contents.push(info);
+          data.Contents.reverse();
+          list.push(data.Contents);
+          cb(null, list);
+        }
+      });
     }
   ], function(err, result) {
     // console.log(err || result);
