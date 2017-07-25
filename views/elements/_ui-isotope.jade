@@ -25,7 +25,7 @@ mixin isotope(amountList, isotope, filterID, shell)
                 ul.list-sm-inline.isotope-filters-list(id=filterID)
                   each item, index in amountList
                     li
-                      a.text-bold(class= index === 0 ? "active" : "")(data-isotope-filter= item.toLocaleLowerCase() === "all galleries" ? "*" : item, data-isotope-group= isotope.group)= item
+                      a.text-bold(class= index === 0 ? "active" : "")(data-isotope-filter= item.toLocaleLowerCase() === "sand rails" ? "*" : item, data-isotope-group= isotope.group)= item
 
       // Isotope Content
       if amountList
